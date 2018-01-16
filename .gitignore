@@ -1,0 +1,23 @@
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.svn
+*.iml
+.classpath
+.project
+.DS_Store
+build
+
+# Package Files #
+.svn
+.idea
+.settings
+target
+logs
+register.properties
+register.properties.lock
+
+# python file
+*.pyc

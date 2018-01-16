@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yunchang</groupId>
+    <artifactId>springvisitor</artifactId>
+    <version>${project.version}</version>
+    <packaging>pom</packaging>
+
+    <url>https://github.com/jasontujun/springvisitor</url>
+
+    <developers>
+        <developer>
+            <name>jasontujun</name>
+            <email>jasontujun@gmail.com</email>
+            <url>https://github.com/jasontujun</url>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>core</module>
+        <module>demo</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.2.8.RELEASE</spring.version>
+        <project.version>1.0-SNAPSHOT</project.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <showWarnings>true</showWarnings>
+                    <encoding>utf-8</encoding>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                            <!-- <classpathPrefix>lib/</classpathPrefix> -->
+                        </manifest>
+                        <manifestEntries>
+                            <!--<Class-Path>${project.build.finalName}.jar</Class-Path>-->
+                            <Built-By>yunchang</Built-By>
+                            <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+                            <Bundle-Name>${project.artifactId}</Bundle-Name>
+                            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                            <Bundle-Version>${project.version}</Bundle-Version>
+                            <Bundle-Vendor>${project.groupId}</Bundle-Vendor>
+                            <Bundle-Activator>com.yunchang.bigdata.collector.Collector</Bundle-Activator>
+                            <Import-Package>
+                                org.osgi.framework
+                            </Import-Package>
+                            <DynamicImport-Package>*</DynamicImport-Package>
+                            <Bundle-Classpath>.</Bundle-Classpath>
+                            <!--
+                            <Export-Package>cn.pointways.osgi.simpleservice.service</Export-Package>
+                            <Import-Package>
+                                org.osgi.framework,com.google.common.collect,org.joda.runtime
+                            </Import-Package>
+                            <DynamicImport-Package>*</DynamicImport-Package>
+
+                            <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                             -->
+                        </manifestEntries>
+                    </archive>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>*.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-idea-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
