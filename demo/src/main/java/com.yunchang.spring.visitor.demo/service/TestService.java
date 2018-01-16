@@ -18,7 +18,7 @@ public class TestService {
 
     /**
      * 反射调用该方法，参数默认有且只有一个，类型为Map
-     * 测试链接 {@link}http://localhost:8080/v1/service/m1?p1=123
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/m1?p1=123
      */
     @ReflectiveMethod
     public String m1(Map<String, String> params) {
@@ -38,7 +38,7 @@ public class TestService {
 
     /**
      * 反射调用该方法，并缓存方法返回结果，下次用同样参数调用该方法，优先查询缓存。
-     * 测试链接 {@link}http://localhost:8080/v1/service/cache?cc=111&dd=2222
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/cache?cc=111&dd=2222
      * @param cc
      * @param dd
      * @return
@@ -52,7 +52,7 @@ public class TestService {
 
     /**
      * 无法反射调用该方法，因为注解的参数列表和实际方法声明的参数列表不一致。
-     * 测试链接 {@link}http://localhost:8080/v1/service/error?aa=123&bb=789
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/error?aa=123&bb=789
      */
     @ReflectiveMethod(params = {"aa", "bb"})
     public String error(String aa, String bb, String cc) {
@@ -62,7 +62,7 @@ public class TestService {
 
     /**
      * 无法反射调用该方法，因为没有加注解
-     * 测试链接 {@link}http://localhost:8080/v1/service/normal?a=123&b=789
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/normal?a=123&b=789
      */
     public String normal(Map<String, String> params) {
         return params.get("param2") + "_suffix";
