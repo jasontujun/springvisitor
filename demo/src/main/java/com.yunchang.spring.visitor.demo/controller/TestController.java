@@ -38,36 +38,4 @@ public class TestController extends AReflectiveController {
                             final HttpServletRequest request, final HttpServletResponse response) {
         return invokeService(request, response, service, method);
     }
-
-    protected Object handleResponse(HttpServletRequest request, HttpServletResponse response,
-                                    String service, String method, Map<String, String> paramMap,
-                                    long costTime, Object result, Exception exception) {
-        // 统一返回内容为json格式，成功status为ok，失败status为fail
-        Map<String, Object> resMap = new HashMap<String, Object>();
-        if (exception == null) {
-            resMap.put("status", "ok");
-            if (result instanceof Map) {
-                resMap.putAll((Map<? extends String, ?>) result);
-            } else {
-                resMap.put("result", result);
-            }
-        } else {
-            resMap.put("status", "fail");
-            resMap.put("error", exception.getMessage());
-        }
-        if (logger.isInfoEnabled()) {
-            Map<String, Object> logMap = new HashMap<String, Object>();
-            logMap.put("time", System.currentTimeMillis());
-            logMap.put("cost", costTime);
-            logMap.put("uri", WebUtil.getUri(request));
-            logMap.put("ip", WebUtil.getIpAddr(request));
-            logMap.put("method", service + "." + method);
-            logMap.put("params", paramMap);
-            logMap.put("response", resMap);
-            logger.info(ParseJson.encodeJson(logMap));
-        }
-        response.setHeader("Connection", "close");
-        response.setContentType("application/json;charset=UTF-8");
-        return resMap;
-    }
 }
