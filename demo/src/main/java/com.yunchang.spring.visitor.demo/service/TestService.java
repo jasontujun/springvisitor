@@ -26,6 +26,15 @@ public class TestService {
     }
 
     /**
+     * 使用别名，反射调用该方法，参数默认有且只有一个，类型为Map
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/alias?p1=123
+     */
+    @ReflectiveMethod(alias = "alias")
+    public String m1Alias(Map<String, String> params) {
+        return m1(params);
+    }
+
+    /**
      * 反射调用该方法，参数自动填充到aa和bb
      * 测试链接 {@link}http://127.0.0.1:8080/v1/service/m2?aa=12&bb=23
      */

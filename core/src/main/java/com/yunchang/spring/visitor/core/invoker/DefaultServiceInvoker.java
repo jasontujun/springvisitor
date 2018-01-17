@@ -57,7 +57,13 @@ public class DefaultServiceInvoker implements IServiceInvoker, ApplicationContex
                 for (Method method : methods) {
                     ReflectiveMethod methodAnnotation = method.getAnnotation(ReflectiveMethod.class);
                     if (methodAnnotation != null) {
-                        methodMap.put(method.getName(), method);
+                        if (methodAnnotation.alias() == null || methodAnnotation.alias().length() == 0) {
+                            // 如果别名为空，则使用声明的方法名
+                            methodMap.put(method.getName(), method);
+                        } else {
+                            // 如果别名不为空，则使用别名
+                            methodMap.put(methodAnnotation.alias(), method);
+                        }
                     }
                 }
                 serviceMethodMap.put(reflectiveServiceAnnotation.value(), methodMap);

@@ -13,6 +13,12 @@ import java.lang.annotation.*;
 public @interface ReflectiveMethod {
 
     /**
+     * 标明方法的别名。如果不指定别名，默认为方法声明时的名字。
+     * @return 返回方法的别名；如果返回为空，则使用方法声明时的名字
+     */
+    String alias() default "";
+
+    /**
      * 标明方法接收的参数名列表
      * @return 如果返回值不为空，则表示方法入参名字列表(必须和方法定义的参数列表顺序一致)。<br/>
      *          如果返回值为空列表，则方法的参数必须有且只有一个，且为Map<String,String>类型
