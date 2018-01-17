@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * <pre>
- * 基于Url中service和method名进行反射访问对应service方法的基类Controller.
+ * 基于service和method名进行反射调用对应service方法的基类Controller。
  * 封装了请求处理过程中的异常处理，以及返回格式的统一处理。
  * 请求入参：
  *      1.url中必须带有service和method名字，用于反射调用对应的带ReflectiveService注解的service方法

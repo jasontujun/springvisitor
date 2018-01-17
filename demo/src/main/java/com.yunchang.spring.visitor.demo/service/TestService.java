@@ -27,7 +27,7 @@ public class TestService {
 
     /**
      * 反射调用该方法，参数自动填充到aa和bb
-     * 测试链接 {@link}http://localhost:8080/v1/service/m2?aa=12&bb=23
+     * 测试链接 {@link}http://127.0.0.1:8080/v1/service/m2?aa=12&bb=23
      */
     @ReflectiveMethod(params = {"aa", "bb"})
     public Map m2(final String aa, final String bb) {
@@ -39,9 +39,6 @@ public class TestService {
     /**
      * 反射调用该方法，并缓存方法返回结果，下次用同样参数调用该方法，优先查询缓存。
      * 测试链接 {@link}http://127.0.0.1:8080/v1/service/cache?cc=111&dd=2222
-     * @param cc
-     * @param dd
-     * @return
      */
     @ReflectiveMethod(params = {"cc", "dd"}, cacheResult = true)
     public Map cache(final String cc, final String dd) {
