@@ -7,7 +7,7 @@ SpringVisitor是一个轻量级的Spring访问层框架。
 
 ## 特性
   - Controller层到Service层的自动关联
-  - 方法级别的缓存，应该重复请求的场景
+  - 方法级别的缓存，适用于重复请求较多的场景
   - 统一的HttpResponse处理和异常处理
   - 更加简洁的Interceptor编写
 
@@ -105,7 +105,11 @@ public class MyExceptionHandler implements IExceptionHandler {
 <bean class="com.xxxx.xxxxx.MyExceptionHandler"/>
 ```
 
-5. 测试一下，在浏览器输入http://127.0.0.1:8080/xxx/YourServiceName/xxxMethod?aa=123&bb=789，该请求即可路由到XXXService的xxxMethod方法了。
+5. 测试一下
+
+在浏览器输入http://127.0.0.1:8080/xxx/YourServiceName/xxxMethod?aa=123&bb=789
+
+该请求即可路由到XXXService的xxxMethod方法了
 
 
 ## 示例
