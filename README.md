@@ -1,19 +1,20 @@
 # Spring Visitor
 
 SpringVisitor是一个轻量级的Spring访问层框架。
-它提供了从Controller层到Service层的自动反射调用：比如url模式为/xxxx/{service}/{method}，则只需要编写一个通用controller便可以将该url下的http请求路由到对应service的对应method中，不再因为service层的扩展而编写更多模板化的controller类。
 
-Spring Visitor还具备如下特性:
+它提供了从Controller层到Service层的自动调用：比如url模式为/xxxx/{service}/{method}，则只需要编写一个通用controller便可以将该url下的http请求路由到对应service的对应method中，不再因为service层的扩展而编写更多模板化的controller类。
+
+
+## 特性
+  - Controller层到Service层的自动关联
   - 方法级别的缓存，应该重复请求的场景
   - 统一的HttpResponse处理和异常处理
   - 更加简洁的Interceptor编写
 
 
-## 引入Spring Visitor
+## 导入
 
-在你的spring项目的pom文件中，添加如下依赖:
-
-Maven
+在你的spring项目的pom文件中，添加如下Maven依赖:
 
 ```xml
 <dependency>
@@ -41,7 +42,7 @@ public class XXXController extends AReflectiveController {
 }
 ```
 
-2. 然后在自己的业务逻辑service类中，添加@ReflectiveService注解；在对应的方法中，添加@ReflectiveMethod注解
+2. 然后在自己的业务逻辑service类，添加@ReflectiveService注解；在对应的方法中，添加@ReflectiveMethod注解。表明该Service的那些方法可以自动反射调用。
 
 ```java
 @ReflectiveService("YourServiceName")
@@ -110,7 +111,9 @@ public class MyExceptionHandler implements IExceptionHandler {
 ## 示例
 
 可以运行项目中的demo项目，对Spring Visitor进行调试。
+
 demo中实现了Json格式的HttpResponse处理器和异常处理器，实现了常用的签名验证和白名单验证的Interceptor。
+
 你可以在自己项目中实现自定义的ServiceInvoker和自定义的缓存ServiceCache，并在spring配置文件中指定成自己的实现。
 
 
